@@ -71,13 +71,13 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
-    if (this.started) {
+    if (car1.started) {
       car1.stopCar()
-      this.started = false
+      car1.started = false
     }
     else {
       car1.startCar()
-      this.started = true
+      car1.started = true
     }
   }
 })
