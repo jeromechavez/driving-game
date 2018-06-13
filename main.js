@@ -4,6 +4,7 @@ class Car {
     this.speed = speed
     this.direction = direction
     this.location = location
+    this.interval = null
   }
 
   turn(direction) {
@@ -37,9 +38,11 @@ class Car {
   }
 
   startCar() {
-    setInterval(() => {
-      this.move()
-    }, 16)
+    this.interval = setInterval(() => {this.move()}, 16)
+  }
+
+  stopCar() {
+    clearInterval(this.interval)
   }
 }
 
