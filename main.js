@@ -5,6 +5,7 @@ class Car {
     this.direction = direction
     this.location = location
     this.interval = null
+    this.start = false
   }
 
   turn(direction) {
@@ -70,6 +71,13 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
-    car1.startCar()
+    if (this.started) {
+      car1.stopCar()
+      this.started = false
+    }
+    else {
+      car1.startCar()
+      this.started = true
+    }
   }
 })
