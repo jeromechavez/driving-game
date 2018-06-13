@@ -13,3 +13,7 @@
 .east {
   transform: rotate(0deg);
 }
+
+.car {
+  position: relative;
+}

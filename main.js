@@ -15,21 +15,26 @@ class Car {
   move() {
     switch (this.direction) {
       case 'north':
-        this.location[1] = this.speed
+        this.location[1] += this.speed
         break
       case 'south':
-        this.location[1] = this.speed
+        this.location[1] -= this.speed
         break
       case 'west':
-        this.location[0] = this.speed
+        this.location[0] -= this.speed
         break
       case 'east':
-        this.location[0] = this.speed
+        this.location[0] += this.speed
     }
+
+    var imagePosition = document.querySelector('.car')
+    imagePosition.style.left = this.location[0] + 'px'
+    imagePosition.style.top = this.location[1] + 'px'
   }
 }
 
 var carImage = document.createElement('img')
+carImage.classList.add('car')
 carImage.setAttribute('src', 'https://openclipart.org/download/234444/stripes.svg')
 carImage.setAttribute('width', '100')
 carImage.setAttribute('height', '50')
