@@ -12,3 +12,5 @@ carImage.setAttribute('src', 'https://openclipart.org/download/234444/stripes.sv
 carImage.setAttribute('width', '100')
 carImage.setAttribute('height', '50')
 document.body.appendChild(carImage)
+
+var car1 = new Car(carImage, 5, 'east', [0, 0])
