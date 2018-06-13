@@ -9,30 +9,34 @@ class Car {
   turn(direction) {
     this.direction = direction
     this.$img.classList = direction
-    return this.direction
   }
 
   move() {
     switch (this.direction) {
       case 'north':
-        this.location[1] += this.speed
+        this.location[1] -= this.speed
+        this.$img.style.top = this.location[1] + 'px'
+        this.$img.style.left = this.location[0] + 'px'
         break
       case 'south':
-        this.location[1] -= this.speed
+        this.location[1] += this.speed
+        this.$img.style.top = this.location[1] + 'px'
+        this.$img.style.left = this.location[0] + 'px'
         break
       case 'west':
         this.location[0] -= this.speed
+        this.$img.style.top = this.location[1] + 'px'
+        this.$img.style.left = this.location[0] + 'px'
         break
       case 'east':
         this.location[0] += this.speed
+        this.$img.style.top = this.location[1] + 'px'
+        this.$img.style.left = this.location[0] + 'px'
+        break
     }
-
-    var imagePosition = document.querySelector('.car')
-    imagePosition.style.left = this.location[0] + 'px'
-    imagePosition.style.top = this.location[1] + 'px'
   }
 
-  start() {
+  startCar() {
     setInterval(() => {
       this.move()
     }, 16)
@@ -41,9 +45,7 @@ class Car {
 
 var carImage = document.createElement('img')
 carImage.classList.add('car')
-carImage.setAttribute('src', 'https://openclipart.org/download/234444/stripes.svg')
-carImage.setAttribute('width', '100')
-carImage.setAttribute('height', '50')
+carImage.setAttribute('src', 'carImage.png')
 document.body.appendChild(carImage)
 
 var car1 = new Car(carImage, 5, 'east', [0, 0])
@@ -60,5 +62,11 @@ document.addEventListener('keydown', (event) => {
   }
   else if (event.key === 'ArrowRight') {
     car1.turn('east')
+  }
+})
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    car1.startCar()
   }
 })

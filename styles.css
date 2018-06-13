@@ -14,6 +14,8 @@
   transform: rotate(0deg);
 }
 
-.car {
+img {
   position: relative;
+  width: 100px;
+  height: 50px;
 }
