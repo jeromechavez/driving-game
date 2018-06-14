@@ -4,6 +4,8 @@ class Car {
     this.speed = speed
     this.direction = direction
     this.location = location
+    this.interval = null
+    this.start = false
   }
 
   turn(direction) {
@@ -37,9 +39,11 @@ class Car {
   }
 
   startCar() {
-    setInterval(() => {
-      this.move()
-    }, 16)
+    this.interval = setInterval(() => {this.move()}, 16)
+  }
+
+  stopCar() {
+    clearInterval(this.interval)
   }
 }
 
@@ -67,6 +71,13 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
-    car1.startCar()
+    if (car1.started) {
+      car1.stopCar()
+      car1.started = false
+    }
+    else {
+      car1.startCar()
+      car1.started = true
+    }
   }
 })
